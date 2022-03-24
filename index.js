@@ -32,60 +32,66 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //Seleccion de figura por usuario
     function seleccionarFigura() {
-        let opcion = parseInt(prompt(`Ingresa tu figura:\n
-        1- Rectangulo
-        2- Triangulo rectangulo
-        3- Circulo`));
+        let opcion;
+        
+        do { 
+            opcion = parseInt(prompt(`Ingresa tu figura:
+                                    1- Rectangulo
+                                    2- Triangulo rectangulo
+                                    3- Circulo`));
+        } while (opcion != 1 && opcion != 2 && opcion != 3);
 
         if (opcion == 1) return "rectangulo";
         if (opcion == 2) return "triangulo";
         if (opcion == 3) return "circulo";
     }
 
-    //Solicitud de datos de figura (tambien usado para radio en circulo)
-    function solicitarBase(figura) {
-        let base;
-
-        do {
-            if (figura == "circulo") {
-                base = parseInt(prompt("Ingrese radio: "));
-            } else {
-                base = parseInt(prompt("Ingrese base: "));
-            }
-        } while (base <= 0 || isNaN(base));
-
-        return base;
-    }
-
-    function solicitarAltura() {
-        let altura;
-
-        do {
-            altura = parseInt(prompt("Ingrese altura: "));
-        } while (altura <= 0 || isNaN(altura));
-
-        return altura;
-    }
-
     //Seleccion de calculo por usuario
     function seleccionarCalculo(figura) {
         let calculo;
 
-        if (figura == "triangulo") {
-            calculo = prompt(`Ingresa el calculo que deseas realizar:\n
-                                1- Area
-                                2- Perimetro
-                                3- Hipotenusa`); //En caso de triangulo muestra hipotenusa
-        } else {
-            calculo = prompt(`Ingresa el calculo que deseas realizar:\n
-                                1- Area
-                                2- Perimetro`);
-        }
+        do {
+            if (figura == "triangulo") {
+                calculo = prompt(`Ingresa el calculo que deseas realizar:\n
+                                    1- Area
+                                    2- Perimetro
+                                    3- Hipotenusa`); //En caso de triangulo muestra hipotenusa
+            } else {
+                calculo = prompt(`Ingresa el calculo que deseas realizar:\n
+                                    1- Area
+                                    2- Perimetro`);
+            }
+        } while (calculo != 1 && calculo != 2 && calculo != 3);
 
         if (calculo == 1) return "area";
         if (calculo == 2) return "perimetro";
         if (calculo == 3) return "hipotenusa";
     }
+
+        //Solicitud de datos de figura (tambien usado para radio en circulo)
+        function solicitarBase(figura) {
+            let base;
+    
+            do {
+                if (figura == "circulo") {
+                    base = parseInt(prompt("Ingrese radio: "));
+                } else {
+                    base = parseInt(prompt("Ingrese base: "));
+                }
+            } while (base <= 0 || isNaN(base));
+    
+            return base;
+        }
+    
+        function solicitarAltura() {
+            let altura;
+    
+            do {
+                altura = parseInt(prompt("Ingrese altura: "));
+            } while (altura <= 0 || isNaN(altura));
+    
+            return altura;
+        }
 
     //Continuar con el programa?
     function continuar() {
