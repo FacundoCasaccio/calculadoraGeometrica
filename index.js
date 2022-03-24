@@ -46,17 +46,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     function solicitarBase(figura) {
         let base;
 
-        if (figura == "circulo") {
-            base = parseInt(prompt("Ingrese radio: "));
-        } else {
-            base = parseInt(prompt("Ingrese base: "));
-        }
+        do {
+            if (figura == "circulo") {
+                base = parseInt(prompt("Ingrese radio: "));
+            } else {
+                base = parseInt(prompt("Ingrese base: "));
+            }
+        } while (base <= 0 || isNaN(base));
 
         return base;
     }
 
     function solicitarAltura() {
-        return parseInt(prompt("Ingrese altura: "));
+        let altura;
+
+        do {
+            altura = parseInt(prompt("Ingrese altura: "));
+        } while (altura <= 0 || isNaN(altura));
+
+        return altura;
     }
 
     //Seleccion de calculo por usuario
